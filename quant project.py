@@ -85,14 +85,14 @@ class VolatilityAdaptiveFX(Strategy):
         rsi = self.rsi[-1]
         regime = self.regime[-1]
 
-        # 🔻 EXIT LOGIC
+        #  EXIT LOGIC
         if self.position:
             if self.position.is_long and rsi > 60:
                 return self.position.close()
             if self.position.is_short and rsi < 40:
                 return self.position.close()
 
-        # 🔥 ENTRY LOGIC
+        # ENTRY LOGIC
         # LOW VOL (mean reversion)
         if regime == 0:
             if price < self.bb_low[-1] and rsi < 35:
@@ -116,7 +116,7 @@ class VolatilityAdaptiveFX(Strategy):
 
 
 # =========================
-# RUN BACKTEST (FINAL)
+# RUN BACKTEST 
 # =========================
 bt = Backtest(
     data,
